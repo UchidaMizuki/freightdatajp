@@ -1,0 +1,11 @@
+url: https://uchidamizuki.github.io/freightdatajp/
+template:
+  bootstrap: 5
+
+reference:
+- title: Get tables
+  contents:
+  - ends_with("_get")
+- title: Declare targets
+  contents:
+  - ends_with("_target")

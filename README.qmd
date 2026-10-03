@@ -1,0 +1,72 @@
+---
+format:
+  gfm:
+    default-image-extension: ""
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# freightdatajp
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/UchidaMizuki/freightdatajp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UchidaMizuki/freightdatajp/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+freightdatajp provides ready-to-use interregional freight flow data for Japan, starting with the interprefectural tables (都道府県間流動表) of the Net Freight Flow Census (全国貨物純流動調査, the logistics census) for 2005, 2010, 2015, and 2021.
+
+The tables are built from the published workbooks by [targets](https://docs.ropensci.org/targets/) pipelines bundled with the package. The first call for a year downloads the sources and builds the tables; later calls read them from the cache managed by [tarchives](https://github.com/UchidaMizuki/tarchives).
+
+## Installation
+
+``` r
+# install.packages("pak")
+pak::pak("UchidaMizuki/freightdatajp")
+```
+
+## Usage
+
+Each function takes the survey year. `logistics_census_flow_get()` also takes the breakdown of the published table to return, here the representative transport mode:
+
+```{r}
+#| label: flow
+library(freightdatajp)
+
+logistics_census_flow_get(2021, by = "mode")
+```
+
+Origins and destinations are two-digit prefecture codes (`"01"` to `"47"`), whose names and representative points (population centroids) are in the zone table:
+
+```{r}
+#| label: zone
+logistics_census_zone_get(2021)
+```
+
+The other tables are:
+
+```{r}
+#| label: other
+#| eval: false
+# Weight (t) between prefectures, by the breakdown of a published table
+logistics_census_flow_get(2021, by = "commodity")
+logistics_census_flow_get(2021, by = "commodity_class") # with n_shipments
+logistics_census_flow_get(2021, by = c("mode", "expressway"))
+logistics_census_flow_get(2021, by = c("mode", "commodity_class"))
+
+# Travel time (h per shipment) by mode
+logistics_census_time_get(2021)
+
+# Freight rate (yen per tonne-km) by mode and commodity class
+logistics_census_freight_rate_get(2021)
+```
+
+Every year returns the same columns, types, and units, so tables for several years can be bound together.

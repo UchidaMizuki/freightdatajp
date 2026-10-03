@@ -1,0 +1,44 @@
+Package: freightdatajp
+Title: Interregional Freight Flow Data for Japan
+Version: 0.0.0.9000
+Authors@R:
+    person("Mizuki", "Uchida", , "uchidamizuki@vivaldi.net", role = c("aut", "cre"))
+Description: Provides ready-to-use Japanese interregional freight flow
+    data, starting with the interprefectural tables of the Net Freight
+    Flow Census (the logistics census) published by the Ministry of Land,
+    Infrastructure, Transport and Tourism. The tables are built on demand
+    from the published workbooks by 'targets' pipelines bundled with the
+    package, and cached via 'tarchives'.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Depends:
+    R (>= 4.1.0)
+Imports:
+    cli,
+    purrr (>= 1.0.0),
+    rlang (>= 1.3.0),
+    stringr (>= 1.5.0),
+    tarchives (>= 0.2.0.9000),
+    targets,
+    tibble,
+    units
+Suggests:
+    curl,
+    dplyr (>= 1.1.0),
+    fs,
+    parzer,
+    readr,
+    readxl,
+    tarchetypes,
+    testthat (>= 3.0.0),
+    tidyr,
+    unpivotr,
+    vctrs
+Remotes:
+    UchidaMizuki/tarchives
+Config/testthat/edition: 3
+URL: https://github.com/UchidaMizuki/freightdatajp,
+    https://uchidamizuki.github.io/freightdatajp/
+BugReports: https://github.com/UchidaMizuki/freightdatajp/issues

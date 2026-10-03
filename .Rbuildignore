@@ -1,0 +1,12 @@
+^freightdatajp\.Rproj$
+^\.Rproj\.user$
+^AGENTS\.md$
+^\.claude$
+^ARCHITECTURE\.md$
+^LICENSE\.md$
+^inst/tarchives/.*/_targets$
+^_pkgdown\.yml$
+^README\.qmd$
+^[.]?air[.]toml$
+^\.vscode$
+^\.github$
